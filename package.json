@@ -1,0 +1,18 @@
+{
+  "name": "manageApi",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": "https://github.com/kamogawa/manageApi.git",
+  "author": "BEUMGOO <captain_kbg@naver.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "concurrently": "^5.0.0"
+  }
+}
