@@ -1,6 +1,6 @@
-const { connection } = require('../middleswares');
+const { sqlConnect } = require('../middleswares');
 
-connection.connect();
+sqlConnect();
 
 exports.deleteCutomer  = (req,res) => {
   let sql = 'UPDATE CUSTOMER SET isDeleted = 1 WHERE id = ?';
@@ -18,3 +18,4 @@ exports.getCutomer  = (req,res) => {
     }
   );
 };
+

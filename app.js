@@ -1,35 +1,21 @@
 const express = require('express');
-const { deleteCutomer, getCutomer } = require('./app/routers/customers');
 const bodyParser = require('body-parser');
-const app = express();
 const port = process.env.PORT || 5000;
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
-require('./db');
-// const data = fs.readFileSync('./db.json');
-// const conf = JSON.parse(data);
-// const mysql = require('mysql');
-
-// const connection = mysql.createConnection({
-//   host: conf.host,
-//   user: conf.user,
-//   password: conf.password,
-//   port: conf.port,
-//   database: conf.database
-// })
-
 const multer = require('multer');
 const upload = multer({dest: './upload'});
+const { connection } =require('./db');
+const { deleteCutomer, getCutomer } = require('./app/routers/customerRouter');
+const routes = require('./routes');
+const customerRouter = require('./app/routers/customerRouter');
 
-app.get('/api/customers', (req,res) => {
-  connection.query(
-    "SELECT * FROM CUSTOMER WHERE isDeleted = 0",
-    (err, rows, fields) => {
-      res.send(rows);
-    }
-  );
-});
+const app = express();
+
+app.use(bodyParser.json());ç
+app.use(bodyParser.urlencoded({extended:true}));
+
+app.use(routes.customer, customerRouter);
+
+app.get('/api/customers', getCutomer);
 app.use('/image', express.static(__dirname + '/upload'));
 
 app.post('/api/customers', upload.single('image'),(req,res) => {
@@ -59,7 +45,4 @@ app.get('/api/users', (req,res) => {
   );
 });
 
-const handleListening = () =>
-  console.log(`✅  Listening on: http://localhost:${port}`);
-
-app.listen(port, handleListening);
+module.exports.app = app;
