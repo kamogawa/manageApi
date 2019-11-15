@@ -1,9 +1,15 @@
 const express = require('express');
 const routes = require('../../routes');
-const { getCutomer } = require('../controllers/customerController');
+const customerRouter = express(); 
+const { 
+  getCutomer, 
+  deleteCutomer 
+} = require('../controllers/customerController');
+const { uploadMiddleWare } = require('../util/middleswares');
 
-const costomerRouter = express.Router();
 
-costomerRouter.get(routes.customer, getCutomer );
+customerRouter.get(routes.home, getCutomer);
+customerRouter.post(routes.home, uploadMiddleWare, deleteCutomer);
+customerRouter.delete(routes.id, deleteCutomer);
 
-module.exports.costomerRouter = costomerRouter;
+module.exports = customerRouter;
