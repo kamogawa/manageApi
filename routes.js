@@ -3,12 +3,13 @@ const ID = "/:id";
 
 const IMAGE = "/image";
 const CUSTOMER = "/api/customers";
-const CUSTOMER_SEARCH = "/customers/:id";
+const USER = "/api/users";
 
 module.exports = {
   home: HOME,
   id: ID,
   image: IMAGE,
-  customer: CUSTOMER
+  customer: CUSTOMER,
+  user: USER,
 };
 
