@@ -8,7 +8,6 @@ const {
 } = require('../controllers/customer');
 const { uploadMiddleWare } = require('../util/middleswares');
 
-
 customerRouter.get(routes.home, getCutomer);
 customerRouter.post(routes.home, uploadMiddleWare, postCutomer);
 customerRouter.delete(routes.id, deleteCutomer);

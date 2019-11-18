@@ -1,7 +1,5 @@
 const { connection, connectCheck } = require('../../util/connetion');
 const { customerSql } = require('../sql');
-connection.connect(connectCheck());
-
 
 exports.deleteCutomer  = (req,res) => {
   let params = [req.params.id];
@@ -30,7 +28,5 @@ exports.postCutomer  = (req,res) => {
 
   connection.query(customerSql.postCustomer, params, (err, rows, fields)=> {
     res.send(rows);
-    console.log(err);
-    console.log(rows); 
   });
 };

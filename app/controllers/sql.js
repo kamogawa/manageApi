@@ -5,5 +5,6 @@ module.exports.customerSql = {
 }
 
 module.exports.userSql = {
-  getUser: 'SELECT * FROM user WHERE status = 0',
+  getUser: 'SELECT * FROM USER WHERE status = 0',
+  postCustomer: 'INSERT INTO USER VALUES (null, ?, ?, ?, ?, now(), null, null, null)'
 }
